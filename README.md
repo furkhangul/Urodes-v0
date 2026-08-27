@@ -11,42 +11,61 @@
 
 ## 📸 Ekran Görüntüleri
 
-### 1 — BIF Viewer Master (Dropzone & Inbox)
-Master rol: `src/bif-viewer/data/dropzone/`’a atılan BIF’leri içe aktarır, `src/bif-viewer/data/inbox/` üzerinden PENDING → ASSIGNED akışını yönetir.
+### 1 — BIF Viewer Master (Dropzone & Inbox) — Gerçek Doku
+Master rol: `src/bif-viewer/data/dropzone/`’a atılan BIF’leri içe aktarır. Arkaplan **B4075-25-HE.bif (72704×77824, 2.01 GB)** gerçek kesitinden alınmış overview (level 5).
 
 ![Master Panel](docs/images/01-bif-viewer-master.png)
+> Kaynak: `src/bif-viewer/data/slides/da796ca0-6aef-48c1-92aa-a738bcdb229b/2026/08/815f6463-2d1f-4bf5-b77a-63756e4d8c8d.bif` — `tifffile` ile level 5 (2272×2432) → `real-bif-1-overview.jpg`
 
-### 2 — BIF Viewer (OpenSeadragon)
-BIF ve OpenSlide listeleri solda, deep-zoom viewer sağda. Tile’lar `/bif-viewer/api/tiles/{z}/{x}/{y}` üzerinden akar.
+### 2 — BIF Viewer (OpenSeadragon) — Gerçek Doku
+Deep-zoom viewer sağda. Tile’lar `/bif-viewer/api/tiles/{z}/{x}/{y}` üzerinden akar. Görsel **B6837-1-25-HE** gerçek doku.
 
 ![BIF Viewer Main](docs/images/02-bif-viewer-main.png)
+> Kaynak: `real-bif-2-overview.jpg` (level 5, 2272×2432)
 
-### 3 — Isı Haritası (Heatmap)
-640×640 karolarla tam çözünürlük tarama, jet colormap ile hücre yoğunluğu. Progress ring ile canlı ilerleme.
+### 3 — Isı Haritası (Heatmap) — Gerçek Doku Üzerinde
+640×640 karolarla tam çözünürlük tarama, jet colormap. **Gerçek doku** üzerinde hücre yoğunluğu overlay (BIF-1 detail 2000×1500, level 2).
 
 ![Heatmap](docs/images/03-viewer-heatmap.png)
+> Kaynak: `real-bif-1-detail.jpg` (13824×13312 level 2, crop 5000,5000 2000×1500) + sentetik heatmap overlay
 
-### 4 — Otomatik Etiketle (YOLO)
-`src/bif-viewer/model/best.pt` ile tüm slayt taraması. Bounding box + `urocell` etiketleri viewer üzerinde.
+### 4 — Otomatik Etiketle (YOLO) — Gerçek Doku Üzerinde
+`src/bif-viewer/model/best.pt` ile tüm slayt taraması. **Gerçek kesit** üzerinde `urocell` bounding box’lar.
 
 ![Auto Label](docs/images/04-viewer-autolabel.png)
+> Kaynak: `real-bif-2-detail.jpg` (18176×19456 level 2) + YOLO box overlay
 
-### 5 — PACS Viewer
-`dcm4chee-arc 5.34.3` + `postgres-dcm4chee` + `slapd` stack. React + Cornerstone DICOM web viewer.
+### 5 — PACS Viewer — Gerçek Histoloji Arkaplan
+`dcm4chee-arc 5.34.3` stack. Arkaplan gerçek histoloji overview ile.
 
 ![PACS Viewer](docs/images/05-pacs-viewer.png)
+> Kaynak: `real-bif-3-overview.jpg` (2400×2304)
 
-### 6 — Gateway & Mimari
-Nginx + oauth2-proxy + Keycloak. `src/gateway/config/nginx/rooms-enabled/` ile oda izolasyonu.
+### 6 — Gateway & Mimari — Gerçek Doku Arkaplanlı
+Nginx + oauth2-proxy + Keycloak. `rooms-enabled/` oda izolasyonu.
 
 ![Gateway Architecture](docs/images/06-gateway-architecture.png)
+> Kaynak: `real-bif-3-detail.jpg` (19200×18432 detail)
 
-### 7 — Gerçek Crop Örnekleri (YOLO çıktıları)
-`src/bif-viewer/data/archive/ImageLog/` altındaki gerçek kesitler:
+### 7 — Gerçek BIF Kesitleri (Ham, İşlenmemiş)
+`tifffile` + `imagecodecs` ile BIF içinden doğrudan çıkarılmış, **hiç sentetik olmayan** hücre kesitleri:
+
+| BIF-1 Tile 640×640 (level 0, 55296×53248) | BIF-2 Tile 640×640 (level 0, 72704×77824) | BIF-3 Tile 640×640 (level 0, 76800×73728) |
+|---|---|---|
+| ![Tissue 1](docs/images/real-tissue-640-1.png) | ![Tissue 2](docs/images/real-tissue-640-2.png) | ![Tissue 3](docs/images/real-tissue-640-3.png) |
+| `real-bif-1-tile640.jpg` 25000,25000 | `real-bif-2-tile640.jpg` 25000,25000 | `real-bif-3-tile640.jpg` 25000,25000 |
+
+YOLO crop çıktıları (`src/bif-viewer/data/archive/ImageLog/`):
 
 | Örnek 1 | Örnek 2 | Örnek 3 |
 |---|---|---|
 | ![Crop 1](docs/images/07-real-crop-01.png) | ![Crop 2](docs/images/08-real-crop-02.png) | ![Crop 3](docs/images/09-real-crop-03.png) |
+
+Makro görüntüler (BIF series 1, 3685×1251):
+
+| BIF-1 Makro | BIF-2 Makro | BIF-3 Makro |
+|---|---|---|
+| ![Macro 1](docs/images/real-bif-1-macro.jpg) | ![Macro 2](docs/images/real-bif-2-macro.jpg) | ![Macro 3](docs/images/real-bif-3-macro.jpg) |
 
 ---
 

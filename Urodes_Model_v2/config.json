@@ -1,0 +1,36 @@
+{
+    "model_name": "Urodes_Final_V1_V5",
+    "detector": {
+        "model": "Urodes_Model_v1",
+        "architecture": "YOLO11m",
+        "weights": "/content/drive/MyDrive/Urodes_Model_v1/runs/Urodes_Model_v1/weights/best.pt",
+        "imgsz": 1024,
+        "confidence": 0.2,
+        "iou": 0.5
+    },
+    "classifier": {
+        "model": "Urodes_Model_v5_classifier",
+        "architecture": "ConvNeXt-Tiny",
+        "weights": "/content/drive/MyDrive/Urodes_Model_v1/runs/Urodes_Model_v5_classifier/best_classifier.pt",
+        "image_size": 224,
+        "confidence": 0.3,
+        "context": 0.25
+    },
+    "classes": [
+        "artefakt",
+        "histiosit",
+        "ignore",
+        "lenfosit",
+        "pmn",
+        "skuamoz-epitel",
+        "urotelyal-atipik",
+        "urotelyal-benign",
+        "urotelyal-yd-kuskulu",
+        "urotelyal-yd-malign"
+    ],
+    "final_test": {
+        "precision": 0.6367,
+        "recall": 0.6499,
+        "f1": 0.6432
+    }
+}

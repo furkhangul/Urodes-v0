@@ -1,0 +1,13 @@
+{
+  "image_size": 640,
+  "confidence": 0.10,
+  "nms_iou": 0.45,
+  "batch": 8,
+  "dedup": {
+    "class_agnostic": true,
+    "iou_threshold": 0.45,
+    "intersection_over_smaller": 0.78,
+    "center_distance": 0.22,
+    "minimum_area_ratio": 0.40
+  }
+}

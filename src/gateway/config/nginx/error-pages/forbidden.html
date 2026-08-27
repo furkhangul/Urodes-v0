@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yetki yok</title>
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; font-family: Arial, sans-serif; background: #f6f7f9; color: #1f2933; }
+    main { width: min(520px, calc(100vw - 32px)); padding: 28px; background: #fff; border: 1px solid #d9dee7; border-radius: 8px; box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08); }
+    h1 { margin: 0 0 10px; font-size: 24px; }
+    p { margin: 0 0 22px; line-height: 1.5; color: #4b5563; }
+    a { appearance: none; border: 1px solid #1f5eff; border-radius: 6px; padding: 10px 14px; font-size: 14px; text-decoration: none; cursor: pointer; background: #1f5eff; color: #fff; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Bu sayfaya erişim yetkin yok</h1>
+    <p>Bu kullanıcı hesabı seçtiğin oda için gerekli grupta değil. Farklı bir kullanıcıyla giriş yapmak için mevcut hesaptan çık.</p>
+    <a id="logout-link" href="/oauth2/sign_out">Hesaptan çık</a>
+  </main>
+  <script>
+    const currentUrl = new URL(window.location.href);
+    const path = currentUrl.pathname;
+    const returnUrl = path.startsWith('/pacs-viewer/') || path.startsWith('/dcm4chee-arc/')
+      ? `${currentUrl.origin}/pacs-viewer/`
+      : `${currentUrl.origin}/bif-viewer/`;
+    document.getElementById('logout-link').href = `${currentUrl.origin}/oauth2/sign_out?rd=${encodeURIComponent(returnUrl)}`;
+  </script>
+</body>
+</html>

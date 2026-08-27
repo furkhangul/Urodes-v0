@@ -1,0 +1,406 @@
+:root {
+  --burgundy: #800020;
+  --bg-dark: #0a0a0a;
+  --bg-row: #161616;
+  --text: #e0e0e0;
+}
+
+body { margin: 0; background: var(--bg-dark); color: var(--text); font-family: 'Inter', sans-serif; }
+
+/* Header & DCM4CHEE Butonu */
+.main-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 40px; background: #000; border-bottom: 2px solid var(--burgundy);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-name {
+  font-size: 13px;
+  color: rgba(224, 224, 224, 0.82);
+}
+
+.role-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.role-admin {
+  background: rgba(128, 0, 32, 0.35);
+  color: #ffb3c7;
+  border: 1px solid rgba(128, 0, 32, 0.8);
+}
+
+.role-viewer {
+  background: rgba(255, 255, 255, 0.08);
+  color: #d8d8d8;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.logout-btn {
+  background: transparent;
+  color: #f0f0f0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pacs-link {
+  background: var(--burgundy); color: white; padding: 6px 14px;
+  border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 13px;
+}
+
+/* Grid Yapısı: 4 Ana Kolon */
+.list-container { width: 100%; padding: 20px 40px; box-sizing: border-box; }
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1fr; /* Kolon genişliklerini sabitledik */
+  width: 100%;
+  align-items: center;
+  padding: 12px 20px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box; /* Kaymayı önlemek için kritik */
+}
+
+/* Katman Spesifik Genişlik ve Boşluk Ayarları */
+.patient-row { background: var(--bg-row); border-left: 6px solid var(--burgundy); }
+
+.study-row { 
+  background: #222; 
+  margin-left: 30px; 
+  width: calc(100% - 30px); /* Kendi içinde tam genişlik */
+  border-left: 4px solid #444;
+}
+
+.series-row { 
+  background: #2a2a2a; 
+  margin-left: 60px; 
+  width: calc(100% - 60px); 
+  border-left: 3px solid #666;
+}
+
+.instance-row { 
+  background: #333; 
+  margin-left: 90px; 
+  width: calc(100% - 90px); 
+  border-left: 2px solid #888;
+  cursor: default;
+}
+
+.col { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 10px; }
+
+/* Buton Stili */
+.view-btn {
+  background: var(--burgundy); color: white; border: none;
+  padding: 4px 10px; border-radius: 3px; cursor: pointer; font-size: 11px;
+}
+
+.viewer-layout {
+  display: flex;
+  height: 100vh;
+  background: #000;
+}
+
+.viewer-sidebar {
+  width: 300px;
+  background: #111;
+  border-right: 2px solid var(--burgundy);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.viewer-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+}
+
+.dicom-overlay-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #00ff00; /* Klasik radyoloji yeşili */
+  font-family: monospace;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+/* Viewer Sayfası Düzeni */
+.viewer-page-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background: #000;
+  overflow: hidden;
+}
+
+.viewer-sidebar {
+  width: 260px;
+  background: #111;
+  border-right: 2px solid var(--burgundy);
+  display: flex;
+  flex-direction: column;
+}
+
+.viewer-main-content {
+  flex: 1;
+  position: relative;
+  background: #000;
+}
+
+/* DICOM Canvas */
+.cornerstone-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.dicom-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.dicom-tag-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #00ff00;
+  font-family: monospace;
+  font-size: 11px;
+  background: rgba(0,0,0,0.5);
+  padding: 4px;
+}
+
+/* Yan Bar Kartları */
+.thumb-card {
+  padding: 10px;
+  border-bottom: 1px solid #222;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.thumb-card.active {
+  background: #1a1a1a;
+  border-left: 4px solid var(--burgundy);
+}
+
+.thumb-placeholder {
+  width: 50px;
+  height: 50px;
+  background: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.viewer-full-screen {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background: #000;
+  overflow: hidden;
+}
+
+.viewer-sidebar {
+  width: 280px;
+  background: #111;
+  border-right: 2px solid var(--burgundy);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-top {
+  padding: 20px;
+  background: #000;
+  border-bottom: 1px solid #333;
+}
+
+.thumbnail-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.thumb-box {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  background: #1a1a1a;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.thumb-box.active {
+  border-color: var(--burgundy);
+  background: #252525;
+}
+
+.viewer-viewport {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  background: #000;
+}
+
+.back-btn {
+  background: var(--burgundy);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.metadata-btn {
+  background: #2c2c2c;
+  color: white;
+  border: 1px solid #555;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.metadata-btn:hover {
+  background: #444;
+}
+
+/* Overlay */
+/* Overlay */
+.metadata-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+/* Modal (yüksekliği sınırla + flex kolon) */
+.metadata-modal{
+  width: 70%;
+  height: 85vh;            /* kritik */
+  background: #1e1e1e;
+  color: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;           /* kritik */
+  flex-direction: column;  /* kritik */
+  overflow: hidden;        /* kritik: scroll'u içeride tutar */
+}
+
+/* Header sabit */
+.metadata-header{
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Scroll burada */
+.metadata-content{
+  flex: 1 1 auto;          /* kritik */
+  overflow-y: auto;         /* kritik */
+  min-height: 0;            /* kritik: flex child scroll fix */
+}
+
+/* Tablo */
+.metadata-table{
+  width: 100%;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+
+.metadata-table th,
+.metadata-table td{
+  border-bottom: 1px solid #333;
+  padding: 4px;
+  text-align: left;
+}
+
+.meta-value{ word-break: break-all; }
+
+.close-btn {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Küçük animasyon */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Patient Level */
+.meta-patient {
+  background-color: rgba(0, 150, 255, 0.15);
+}
+
+/* Study Level */
+.meta-study {
+  background-color: rgba(0, 255, 150, 0.15);
+}
+
+/* Instance Level */
+.meta-instance {
+  background-color: rgba(255, 180, 0, 0.15);
+}
+
+/* Default */
+.meta-default {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.highlight-study-uid {
+  background-color: rgba(0, 255, 0, 0.25);
+  font-weight: bold;
+}
+
+.highlight-series-uid {
+  background-color: rgba(0, 150, 255, 0.25);
+  font-weight: bold;
+}
+
+.highlight-sop-uid {
+  background-color: rgba(255, 120, 0, 0.25);
+  font-weight: bold;
+}

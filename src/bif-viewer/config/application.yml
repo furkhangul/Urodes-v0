@@ -1,0 +1,58 @@
+server:
+  forward-headers-strategy: native
+  servlet:
+    context-path: /bif-viewer  # BU SATIRI EKLE
+  http2:
+    enabled: true
+  port: 8080
+
+bif:
+  tile-size: 512
+  slides-dir: /app/slides
+  archive-dir: /app/archive
+  cache:
+    max-size-bytes: 1073741824
+    decoded-max-size-bytes: 536870912
+  reader-pool-size: 16
+  ingest:
+    watch-enabled: true
+    inbox-dir: /app/inbox
+    dropzone-dir: /app/dropzone
+    poll-interval-ms: 2000
+    stability-checks: 2
+    stability-min-age-ms: 1500
+    min-size-bytes: 1024
+    cleanup-policy: DELETE
+    ignored-suffixes:
+      - .tmp
+      - .part
+      - .crdownload
+      - .filepart
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres-bif:5432/bifviewer}
+    username: ${SPRING_DATASOURCE_USERNAME:bifviewer}
+    password: ${SPRING_DATASOURCE_PASSWORD:bifviewer}
+  cache:
+    type: caffeine
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 12GB
+      max-request-size: 12GB
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${KEYCLOAK_JWK_SET_URI:http://gateway-nginx:8090/keycloak/realms/gateway/protocol/openid-connect/certs}
+          issuer-uri: ${SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI:https://localhost/keycloak/realms/gateway}
+
+openslide:
+  cache:
+    max-size-bytes: 1073741824

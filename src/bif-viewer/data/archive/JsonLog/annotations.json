@@ -1,0 +1,274 @@
+{
+  "version" : 1,
+  "coordinateSpace" : "slide-pixels",
+  "updatedAt" : "2026-08-21T07:41:39.959853271Z",
+  "slides" : {
+    "815f6463-2d1f-4bf5-b77a-63756e4d8c8d" : {
+      "slideId" : "815f6463-2d1f-4bf5-b77a-63756e4d8c8d",
+      "fileName" : "B4075-25-HE.bif",
+      "kind" : "bif",
+      "width" : 74752,
+      "height" : 72704,
+      "micronsPerPixel" : 0.25,
+      "regions" : [ {
+        "regionId" : "r-mt1gerdxn7wjhl",
+        "createdAt" : "2026-08-20T11:45:26.705043837Z",
+        "updatedAt" : "2026-08-20T11:45:26.705059436Z",
+        "image" : "ImageLog/815f6463-2d1f-4bf5-b77a-63756e4d8c8d__r-mt1gerdxn7wjhl__20260820T114526.png",
+        "bbox" : [ 13708, 21629, 1039, 1039 ],
+        "annotations" : [ {
+          "id" : "a-mt1gerdxri2hj2",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 14510, 21631, 14638, 21754 ],
+          "conf" : 0.5454,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxzpmk6l",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 14014, 22554, 14115, 22660 ],
+          "conf" : 0.5295,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxmxbaeo",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 14441, 22391, 14543, 22481 ],
+          "conf" : 0.5237,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxetr5xi",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 14326, 21629, 14465, 21698 ],
+          "conf" : 0.4827,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxeptk08",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 14597, 22510, 14689, 22634 ],
+          "conf" : 0.4063,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdx6e2rxk",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 13804, 22597, 13944, 22668 ],
+          "conf" : 0.3606,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxj0ykgo",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 13708, 22548, 13791, 22668 ],
+          "conf" : 0.3277,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdx8o34jz",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 13957, 22391, 14056, 22495 ],
+          "conf" : 0.3244,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxiszc7w",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 14375, 22472, 14481, 22568 ],
+          "conf" : 0.3223,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdx4ermtl",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 14613, 21786, 14687, 21859 ],
+          "conf" : 0.3117,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxthffbx",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 13716, 22285, 13810, 22414 ],
+          "conf" : 0.3104,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxc7fagx",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 14402, 21783, 14486, 21928 ],
+          "conf" : 0.3052,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxkquwxa",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 14486, 22561, 14558, 22666 ],
+          "conf" : 0.2904,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxhstnxz",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 14642, 22060, 14728, 22151 ],
+          "conf" : 0.2732,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gerdxrwujat",
+          "label" : "urotelyal-atipik",
+          "bbox" : [ 14667, 21834, 14745, 21915 ],
+          "conf" : 0.2608,
+          "source" : "model"
+        } ],
+        "count" : 15
+      }, {
+        "regionId" : "r-mt1gj21e034y41",
+        "createdAt" : "2026-08-20T11:48:47.159085775Z",
+        "updatedAt" : "2026-08-20T11:48:47.159129070Z",
+        "image" : "ImageLog/815f6463-2d1f-4bf5-b77a-63756e4d8c8d__r-mt1gj21e034y41__20260820T114847.png",
+        "bbox" : [ 31433, 6936, 1458, 1020 ],
+        "annotations" : [ ],
+        "count" : 0
+      }, {
+        "regionId" : "r-mt1gj8hul0128o",
+        "createdAt" : "2026-08-20T11:48:55.518413068Z",
+        "updatedAt" : "2026-08-20T11:49:15.419161500Z",
+        "image" : "ImageLog/815f6463-2d1f-4bf5-b77a-63756e4d8c8d__r-mt1gj8hul0128o__20260820T114855.png",
+        "bbox" : [ 34311, 9851, 488, 384 ],
+        "annotations" : [ {
+          "id" : "a-mt1gj8huwn5yh5",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33740, 9942, 33818, 10036 ],
+          "conf" : 0.8598,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8hu9w81ye",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33771, 10079, 33848, 10178 ],
+          "conf" : 0.7552,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8hux0uu8b",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33823, 9931, 33883, 10008 ],
+          "conf" : 0.7307,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8hu5ky4dt",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33413, 10043, 33500, 10154 ],
+          "conf" : 0.7166,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8hug261m5",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33796, 10005, 33847, 10070 ],
+          "conf" : 0.5887,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8hu21wwif",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33846, 10001, 33893, 10066 ],
+          "conf" : 0.5543,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8hu147zol",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33651, 9920, 33731, 10013 ],
+          "conf" : 0.4533,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8hukaan1x",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33538, 10021, 33599, 10113 ],
+          "conf" : 0.3945,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8hu31huh0",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33797, 10181, 33883, 10248 ],
+          "conf" : 0.3429,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8hutgifnn",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33678, 10179, 33745, 10241 ],
+          "conf" : 0.2844,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8hurpguno",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33693, 10122, 33755, 10188 ],
+          "conf" : 0.2834,
+          "source" : "model"
+        }, {
+          "id" : "a-mt1gj8huc21l4z",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33454, 10157, 33531, 10247 ],
+          "conf" : 0.261,
+          "source" : "model"
+        } ],
+        "count" : 12
+      }, {
+        "regionId" : "r-mt1gmhj23vmyh4",
+        "createdAt" : "2026-08-20T11:51:27.212075431Z",
+        "updatedAt" : "2026-08-20T11:51:27.212195951Z",
+        "image" : "ImageLog/815f6463-2d1f-4bf5-b77a-63756e4d8c8d__r-mt1gmhj23vmyh4__20260820T115127.png",
+        "bbox" : [ 33441, 9786, 290, 153 ],
+        "annotations" : [ {
+          "id" : "a-mt1gmhj219prmv",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 33570, 9832, 33731, 9939 ],
+          "conf" : 0.4852,
+          "source" : "model"
+        } ],
+        "count" : 1
+      }, {
+        "regionId" : "r-mt2n4k305qe5la",
+        "createdAt" : "2026-08-21T07:41:14.239413193Z",
+        "updatedAt" : "2026-08-21T07:41:18.817796049Z",
+        "image" : "ImageLog/815f6463-2d1f-4bf5-b77a-63756e4d8c8d__r-mt2n4k305qe5la__20260821T074114.png",
+        "bbox" : [ 43399, 37903, 262, 195 ],
+        "annotations" : [ ],
+        "count" : 0
+      }, {
+        "regionId" : "r-mt2n4px140yczq",
+        "createdAt" : "2026-08-21T07:41:21.701613257Z",
+        "updatedAt" : "2026-08-21T07:41:39.959371075Z",
+        "image" : "ImageLog/815f6463-2d1f-4bf5-b77a-63756e4d8c8d__r-mt2n4px140yczq__20260821T074121.png",
+        "bbox" : [ 43399, 37903, 262, 195 ],
+        "annotations" : [ {
+          "id" : "a-mt2n4px1dxjy7t",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 43404, 37958, 43448, 38020 ],
+          "conf" : 0.6443,
+          "source" : "model"
+        }, {
+          "id" : "a-mt2n4px1q66ibf",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 43533, 37997, 43602, 38060 ],
+          "conf" : 0.5731,
+          "source" : "model"
+        }, {
+          "id" : "a-mt2n4px1qxkghj",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 43446, 37957, 43498, 38013 ],
+          "conf" : 0.5684,
+          "source" : "model"
+        }, {
+          "id" : "a-mt2n4px1hzvc8d",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 43594, 37971, 43634, 38024 ],
+          "conf" : 0.5095,
+          "source" : "model"
+        }, {
+          "id" : "a-mt2n4px1jhv82s",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 43586, 37903, 43637, 37943 ],
+          "conf" : 0.3668,
+          "source" : "model"
+        }, {
+          "id" : "a-mt2n4px1vakr0h",
+          "label" : "pmn",
+          "bbox" : [ 43523, 37957, 43571, 38007 ],
+          "conf" : 0.3504,
+          "source" : "manual"
+        }, {
+          "id" : "a-mt2n4px155bbz8",
+          "label" : "skuamoz-epitel",
+          "bbox" : [ 43623, 38028, 43661, 38094 ],
+          "conf" : 0.2545,
+          "source" : "model"
+        } ],
+        "count" : 7
+      } ]
+    }
+  }
+}

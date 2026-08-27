@@ -1,0 +1,141 @@
+name: gateway
+
+services:
+  gateway-nginx:
+    image: nginx:1.27-alpine
+    container_name: gateway-nginx
+    depends_on:
+      gateway-oauth2-proxy:
+        condition: service_started
+      gateway-keycloak-1:
+        condition: service_healthy
+      gateway-keycloak-2:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./config/nginx/rooms-enabled:/etc/nginx/rooms-enabled:ro
+      - ./config/nginx/error-pages:/etc/nginx/error-pages:ro
+      - ../../infra/certs/internal-dev:/etc/nginx/internal-certs:ro
+    networks:
+      local-dev:
+        aliases:
+          - gateway.local
+    restart: unless-stopped
+
+  gateway-oauth2-proxy:
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.6.0
+    container_name: gateway-oauth2-proxy
+    depends_on:
+      gateway-keycloak-1:
+        condition: service_healthy
+      gateway-keycloak-2:
+        condition: service_healthy
+    command:
+      - --config=/etc/oauth2-proxy/gateway.cfg
+    volumes:
+      - ./config/oauth2-proxy/gateway.cfg:/etc/oauth2-proxy/gateway.cfg:ro
+    networks:
+      - local-dev
+    restart: unless-stopped
+
+  gateway-keycloak-1:
+    image: quay.io/keycloak/keycloak:25.0
+    container_name: gateway-keycloak-1
+    command: start-dev --import-realm
+    depends_on:
+      gateway-keycloak-db:
+        condition: service_healthy
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://gateway-keycloak-db:5432/keycloak
+      KC_DB_USERNAME: ${KEYCLOAK_DB_USER:-keycloak}
+      KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-keycloak}
+      KC_HTTP_RELATIVE_PATH: /keycloak
+      KC_HOSTNAME: https://localhost/keycloak
+      KC_HOSTNAME_STRICT: "false"
+      KC_PROXY_HEADERS: xforwarded
+      KC_HEALTH_ENABLED: "true"
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN:-admin}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-admin}
+      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME_STRICT_HTTPS: "false"
+    volumes:
+      - ./config/keycloak/realms:/opt/keycloak/data/import:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'bash -c ''exec 3<>/dev/tcp/127.0.0.1/8080 && printf "GET /keycloak/ HTTP/1.0\r\n\r\n" >&3 && head -1 <&3 | grep -q "HTTP/1.0 30"''']
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 90s
+    networks:
+      - local-dev
+    restart: unless-stopped
+
+  gateway-keycloak-2:
+    image: quay.io/keycloak/keycloak:25.0
+    container_name: gateway-keycloak-2
+    command: start-dev
+    depends_on:
+      gateway-keycloak-db:
+        condition: service_healthy
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://gateway-keycloak-db:5432/keycloak
+      KC_DB_USERNAME: ${KEYCLOAK_DB_USER:-keycloak}
+      KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-keycloak}
+      KC_HTTP_RELATIVE_PATH: /keycloak
+      KC_HOSTNAME: https://localhost/keycloak
+      KC_HOSTNAME_STRICT: "false"
+      KC_PROXY_HEADERS: xforwarded
+      KC_HEALTH_ENABLED: "true"
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN:-admin}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-admin}
+      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME_STRICT_HTTPS: "false"
+    healthcheck:
+      test: ['CMD-SHELL', 'bash -c ''exec 3<>/dev/tcp/127.0.0.1/8080 && printf "GET /keycloak/ HTTP/1.0\r\n\r\n" >&3 && head -1 <&3 | grep -q "HTTP/1.0 30"''']
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 90s
+    networks:
+      - local-dev
+    restart: unless-stopped
+
+  gateway-keycloak-db:
+    image: postgres:16-alpine
+    container_name: gateway-keycloak-db
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: ${KEYCLOAK_DB_USER:-keycloak}
+      POSTGRES_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-keycloak}
+    volumes:
+      - gateway-keycloak-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${KEYCLOAK_DB_USER:-keycloak} -d keycloak"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - local-dev
+    restart: unless-stopped
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: viewer_tunnel_daemon
+    restart: always
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    networks:
+      - local-dev
+
+volumes:
+  gateway-keycloak-data:
+    name: gateway-keycloak-data
+
+networks:
+  local-dev:
+    external: true
+    name: local-dev

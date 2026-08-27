@@ -1,0 +1,94 @@
+name: pacs-viewer
+
+services:
+  pacs-viewer-db:
+    image: dcm4che/postgres-dcm4chee:11.22-34
+    container_name: pacs-viewer-db
+    restart: always
+    environment:
+      POSTGRES_DB: pacsdb
+      POSTGRES_USER: pacs
+      POSTGRES_PASSWORD: pacs
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pacs -d pacsdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - pacs-viewer-network
+
+  pacs-viewer-ldap:
+    image: dcm4che/slapd-dcm4chee:2.6.10-34.3
+    container_name: pacs-viewer-ldap
+    restart: always
+    environment:
+      LDAP_BASE_DN: dc=dcm4che,dc=org
+      LDAP_ROOTPASS: secret
+    volumes:
+      - ./data/ldap:/var/lib/ldap
+      - ./data/slapd.d:/etc/ldap/slapd.d
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 389"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - pacs-viewer-network
+
+  pacs-viewer-arc:
+    image: dcm4che/dcm4chee-arc-psql:5.34.3
+    container_name: pacs-viewer-arc
+    restart: always
+    environment:
+      POSTGRES_DB: pacsdb
+      POSTGRES_USER: pacs
+      POSTGRES_PASSWORD: pacs
+      POSTGRES_HOST: pacs-viewer-db
+      LDAP_URL: ldap://pacs-viewer-ldap:389
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./data/arc:/opt/wildfly/standalone/
+    ports:
+      - "11113:11112"
+    depends_on:
+      pacs-viewer-db:
+        condition: service_healthy
+      pacs-viewer-ldap:
+        condition: service_healthy
+    networks:
+      pacs-viewer-network:
+      local-dev:
+        aliases:
+          - pacs-viewer-arc
+
+  pacs-viewer-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PUBLIC_URL: /pacs-viewer
+    image: pacs-viewer:V1.0.0-prod
+    container_name: pacs-viewer-app
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - pacs-viewer-arc
+    restart: always
+    networks:
+      pacs-viewer-network:
+      local-dev:
+        aliases:
+          - pacs-viewer-app
+
+networks:
+  pacs-viewer-network:
+    driver: bridge
+  local-dev:
+    external: true
+    name: local-dev

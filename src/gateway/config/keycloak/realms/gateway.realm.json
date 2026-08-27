@@ -1,0 +1,198 @@
+{
+  "realm": "gateway",
+  "enabled": true,
+  "displayName": "Gateway",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": false,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": false,
+  "groups": [
+    {
+      "name": "gateway-admin"
+    },
+    {
+      "name": "bif-master"
+    },
+    {
+      "name": "bif-viewer"
+    },
+    {
+      "name": "pacs-admin"
+    },
+    {
+      "name": "pacs-viewer"
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "master"
+      },
+      {
+        "name": "viewer"
+      },
+      {
+        "name": "admin"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "gateway-oauth2-proxy",
+      "name": "Gateway OAuth2 Proxy",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "gateway-oauth2-proxy-secret",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": [
+        "https://localhost/oauth2/callback"
+      ],
+      "webOrigins": [
+        "https://localhost"
+      ],
+      "protocolMappers": [
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "full.path": "false",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true",
+            "claim.name": "groups"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "gateway_admin_dev",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "gateway-admin@example.com",
+      "firstName": "Gateway",
+      "lastName": "Admin",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/gateway-admin",
+        "/bif-master",
+        "/pacs-admin"
+      ],
+      "realmRoles": [
+        "master",
+        "admin"
+      ]
+    },
+    {
+      "username": "bif_master_dev",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "bif-master@example.com",
+      "firstName": "BIF",
+      "lastName": "Master",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/bif-master"
+      ],
+      "realmRoles": [
+        "master"
+      ]
+    },
+    {
+      "username": "bif_viewer_dev",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "bif-viewer@example.com",
+      "firstName": "BIF",
+      "lastName": "Viewer",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "viewer",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/bif-viewer"
+      ],
+      "realmRoles": [
+        "viewer"
+      ]
+    },
+    {
+      "username": "pacs_admin_dev",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "pacs-admin@example.com",
+      "firstName": "PACS",
+      "lastName": "Admin",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/pacs-admin"
+      ],
+      "realmRoles": [
+        "admin"
+      ]
+    },
+    {
+      "username": "pacs_viewer_dev",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "pacs-viewer@example.com",
+      "firstName": "PACS",
+      "lastName": "Viewer",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "viewer",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/pacs-viewer"
+      ],
+      "realmRoles": [
+        "viewer"
+      ]
+    },
+    {
+      "username": "gateway_denied_dev",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "denied@example.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "denied",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+name: bif-viewer
+
+services:
+  bif-viewer-db:
+    image: postgres:16-alpine
+    container_name: bif-viewer-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-bifviewer}
+      POSTGRES_USER: ${POSTGRES_USER:-bifviewer}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bifviewer}
+    volumes:
+      - bif-viewer-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-bifviewer} -d ${POSTGRES_DB:-bifviewer}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - local-dev
+    restart: unless-stopped
+
+  bif-viewer-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bif-viewer-app
+    mem_limit: 6g
+    depends_on:
+      bif-viewer-db:
+        condition: service_healthy
+    environment:
+      JAVA_OPTS: -Xms512m -Xmx4g -XX:+UseZGC -XX:SoftRefLRUPolicyMSPerMB=20
+      SPRING_CONFIG_ADDITIONAL_LOCATION: file:/app/conf/
+      SPRING_DATASOURCE_URL: jdbc:postgresql://bif-viewer-db:5432/${POSTGRES_DB:-bifviewer}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-bifviewer}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-bifviewer}
+      KEYCLOAK_JWK_SET_URI: http://gateway-nginx:8090/keycloak/realms/gateway/protocol/openid-connect/certs
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: https://localhost/keycloak/realms/gateway
+    volumes:
+      - ./data/slides:/app/slides
+      - ./data/inbox:/app/inbox
+      - ./data/dropzone:/app/dropzone
+      - ./data/archive:/app/archive
+#       - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./config/application.yml:/app/conf/application.yml:ro
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:8080/bif-viewer/ >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 90s
+    networks:
+      - local-dev
+    restart: unless-stopped
+
+  bif-viewer-model:
+    build:
+      context: ./model
+      dockerfile: Dockerfile
+    container_name: bif-viewer-model
+    mem_limit: 4g
+    environment:
+      MODEL_PATH: /model/best.pt
+      DEFAULT_CONF: "0.25"
+      DEFAULT_IOU: "0.5"
+      DEFAULT_IMGSZ: "640"
+    volumes:
+      - ./model/best.pt:/model/best.pt:ro
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:8000/health >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 120s
+    networks:
+      - local-dev
+    restart: unless-stopped
+
+volumes:
+  bif-viewer-db-data:
+    name: bif-viewer-db-data
+
+networks:
+  local-dev:
+    external: true
+    name: local-dev

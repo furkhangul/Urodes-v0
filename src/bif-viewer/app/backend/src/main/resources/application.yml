@@ -1,0 +1,48 @@
+server:
+  forward-headers-strategy: framework
+  http2:
+    enabled: true
+  port: 8080
+
+bif:
+  tile-size: 512
+  slides-dir: /app/slides
+  archive-dir: /app/archive
+  cache:
+    max-size-bytes: 1073741824
+  reader-pool-size: 16
+  ingest:
+    watch-enabled: true
+    inbox-dir: /app/inbox
+    poll-interval-ms: 2000
+    stability-checks: 2
+    stability-min-age-ms: 1500
+    min-size-bytes: 1024
+    cleanup-policy: DELETE
+    ignored-suffixes:
+      - .tmp
+      - .part
+      - .crdownload
+      - .filepart
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres:5432/bifviewer}
+    username: ${SPRING_DATASOURCE_USERNAME:bifviewer}
+    password: ${SPRING_DATASOURCE_PASSWORD:bifviewer}
+  cache:
+    type: caffeine
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 50GB
+      max-request-size: 50GB
+
+openslide:
+  cache:
+    max-size-bytes: 1073741824

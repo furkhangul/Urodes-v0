@@ -1,0 +1,80 @@
+# Secrets / env
+.env
+**/.env
+**/.env.*
+!**/.env.example
+
+# Cloudflare / TLS / private cert material
+infra/certs/*
+!infra/certs/.gitkeep
+!infra/certs/**/.gitkeep
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+!*.example.crt
+
+# Runtime data - BIF
+src/bif-viewer/data/dropzone/*
+!src/bif-viewer/data/dropzone/.gitkeep
+
+src/bif-viewer/data/inbox/*
+!src/bif-viewer/data/inbox/.gitkeep
+
+src/bif-viewer/data/slides/*
+!src/bif-viewer/data/slides/.gitkeep
+
+src/bif-viewer/data/**/*.bif
+
+# Runtime data - PACS
+src/pacs-viewer/data/db/*
+src/pacs-viewer/data/arc/*
+src/pacs-viewer/data/ldap/*
+src/pacs-viewer/data/slapd.d/*
+
+!src/pacs-viewer/data/arc/.gitkeep
+!src/pacs-viewer/data/ldap/.gitkeep
+!src/pacs-viewer/data/slapd.d/.gitkeep
+
+# Test / staging data
+test_data/*
+!test_data/.gitkeep
+
+# Medical / large files
+*.dcm
+*.dicom
+*.bif
+*.svs
+*.ndpi
+*.tiff
+*.tif
+
+# Logs / temp
+*.log
+logs/
+tmp/
+temp/
+.cache/
+.DS_Store
+
+# Build outputs
+node_modules/
+**/node_modules/
+dist/
+build/
+target/
+*.class
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Archives
+*.tar
+*.tar.gz
+*.zip
+
+# IDE
+.idea/
+.vscode/

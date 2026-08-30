@@ -1,5 +1,4 @@
-# Urodes — The Server Bone (Ratione Divide AI)
-
+# Urodes — The Server Bone
 > **BIF Viewer + PACS Viewer + Gateway** — 3 odalı patoloji/DICOM görüntüleme platformu. Backend normalizasyonu ve UI upgrade ile `the_server_bone`’dan evrilmiştir.
 
 [![Stack](https://img.shields.io/badge/stack-Java%2017%20%7C%20Spring%20Boot%20%7C%20React%20%7C%20OpenSeadragon-blue)](#)

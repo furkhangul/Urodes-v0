@@ -1,0 +1,23 @@
+UroDes V5 final model
+
+Model:
+models/UroDes_V5_YOLO26s_TRUE_IGNORE_seed0_FINAL.pt
+SHA256:
+c8914bec6e808dc09427a8c7dd638a6d44f551ca85245fd0b72ef5813ad3fe80
+
+TRUE-IGNORE module:
+runtime/urodes_ignore_yolo26_v2_3.py
+SHA256:
+611bb908ba291fcea8274c9a2bc4315147f8a6ff95ba16f33c1fcbc7ee6df739
+
+Frozen threshold:
+0.2516763508319855
+
+ATYPICAL logit bias:
++0.30
+
+Final class-agnostic NMS IoU:
+0.30
+
+Final max_det:
+300

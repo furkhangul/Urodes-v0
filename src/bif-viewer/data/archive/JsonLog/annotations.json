@@ -1,7 +1,7 @@
 {
   "version" : 1,
   "coordinateSpace" : "slide-pixels",
-  "updatedAt" : "2026-08-21T07:41:39.959853271Z",
+  "updatedAt" : "2026-09-01T17:38:39.335540486Z",
   "slides" : {
     "815f6463-2d1f-4bf5-b77a-63756e4d8c8d" : {
       "slideId" : "815f6463-2d1f-4bf5-b77a-63756e4d8c8d",
@@ -268,6 +268,133 @@
           "source" : "model"
         } ],
         "count" : 7
+      } ]
+    },
+    "3c4252eb-d7b7-4597-a991-49de08dc01bb" : {
+      "slideId" : "3c4252eb-d7b7-4597-a991-49de08dc01bb",
+      "fileName" : "B-6623-25- PAP.bif",
+      "kind" : "bif",
+      "width" : 51200,
+      "height" : 55296,
+      "micronsPerPixel" : 0.25,
+      "regions" : [ {
+        "regionId" : "r-mtiyapnpl37m17",
+        "createdAt" : "2026-09-01T17:38:25.087044673Z",
+        "updatedAt" : "2026-09-01T17:38:25.087122828Z",
+        "image" : "ImageLog/3c4252eb-d7b7-4597-a991-49de08dc01bb__r-mtiyapnpl37m17__20260901T173815.png",
+        "bbox" : [ 37543, 15893, 1075, 1020 ],
+        "annotations" : [ {
+          "id" : "a-mtiyapnp9y13c0",
+          "label" : "SKUAMOZ_EPITEL",
+          "bbox" : [ 38233, 15941, 38426, 16147 ],
+          "conf" : 0.798,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyapnplsjwvj",
+          "label" : "BENIGN",
+          "bbox" : [ 37824, 16391, 37914, 16483 ],
+          "conf" : 0.7191,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyapnpa6zbql",
+          "label" : "SKUAMOZ_EPITEL",
+          "bbox" : [ 37899, 16308, 38055, 16479 ],
+          "conf" : 0.6996,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyapnpbiusa7",
+          "label" : "SKUAMOZ_EPITEL",
+          "bbox" : [ 38494, 16385, 38618, 16540 ],
+          "conf" : 0.6392,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyapnplog8ti",
+          "label" : "BENIGN",
+          "bbox" : [ 37977, 16466, 38061, 16557 ],
+          "conf" : 0.468,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyapnp506w3a",
+          "label" : "BENIGN",
+          "bbox" : [ 37993, 16559, 38061, 16607 ],
+          "conf" : 0.4174,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyapnpln1v3r",
+          "label" : "BENIGN",
+          "bbox" : [ 37895, 16245, 37959, 16305 ],
+          "conf" : 0.286,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyapnpz2gubr",
+          "label" : "BENIGN",
+          "bbox" : [ 37543, 15893, 37620, 15929 ],
+          "conf" : 0.2777,
+          "source" : "model"
+        } ],
+        "count" : 8
+      }, {
+        "regionId" : "r-mtiyb12c8d9lz5",
+        "createdAt" : "2026-09-01T17:38:32.374888675Z",
+        "updatedAt" : "2026-09-01T17:38:39.333422800Z",
+        "image" : "ImageLog/3c4252eb-d7b7-4597-a991-49de08dc01bb__r-mtiyb12c8d9lz5__20260901T173830.png",
+        "bbox" : [ 37543, 15893, 1075, 1020 ],
+        "annotations" : [ {
+          "id" : "a-mtiyb12cdwzy0o",
+          "label" : "BENIGN",
+          "bbox" : [ 37778, 16531, 37924, 16644 ],
+          "conf" : 0.7967,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyb12c86arlz",
+          "label" : "SKUAMOZ_EPITEL",
+          "bbox" : [ 38287, 16187, 38480, 16380 ],
+          "conf" : 0.7943,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyb12cbffe1k",
+          "label" : "SKUAMOZ_EPITEL",
+          "bbox" : [ 37968, 16101, 38096, 16318 ],
+          "conf" : 0.7845,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyb12cyqj8zx",
+          "label" : "SKUAMOZ_EPITEL",
+          "bbox" : [ 38094, 16155, 38278, 16486 ],
+          "conf" : 0.6611,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyb12ce0md9m",
+          "label" : "BENIGN",
+          "bbox" : [ 38124, 16694, 38307, 16818 ],
+          "conf" : 0.4806,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyb12c7eiqp0",
+          "label" : "BENIGN",
+          "bbox" : [ 38303, 16613, 38363, 16687 ],
+          "conf" : 0.3911,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyb12c0v688i",
+          "label" : "BENIGN",
+          "bbox" : [ 38503, 16070, 38567, 16127 ],
+          "conf" : 0.3739,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyb12c3ry8jx",
+          "label" : "BENIGN",
+          "bbox" : [ 38379, 15933, 38461, 16011 ],
+          "conf" : 0.3259,
+          "source" : "model"
+        }, {
+          "id" : "a-mtiyb12chtk3nc",
+          "label" : "BENIGN",
+          "bbox" : [ 38114, 15893, 38272, 15927 ],
+          "conf" : 0.3217,
+          "source" : "model"
+        } ],
+        "count" : 9
       } ]
     }
   }

@@ -1,0 +1,9 @@
+# UroDes V5 final engineering runtime
+ultralytics==8.4.126
+
+# Install a mutually compatible PyTorch/Torchvision pair for the target CUDA/CPU host.
+# Closure environment:
+# torch=2.11.0+cu128
+# torchvision=0.26.0+cu128
+# cuda=12.8
+numpy

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "RISK-01",
+    "severity": "MATERIAL",
+    "topic": "ATYPICAL generalization",
+    "evidence": {
+      "VALID_to_TEST_delta_pp": -17.356979405034327,
+      "TEST_recall": 0.20614035087719298,
+      "TEST_F2": 0.2324431256181998
+    },
+    "handling": "Report ATYPICAL separately; do not represent TEST performance as equivalent to VALID. No post-TEST retuning in V5."
+  },
+  {
+    "id": "RISK-02",
+    "severity": "MATERIAL",
+    "topic": "SUSPICIOUS generalization",
+    "evidence": {
+      "VALID_to_TEST_delta_pp": -13.63962147256405,
+      "TEST_recall": 0.2661596958174905,
+      "TEST_F2": 0.2988898377455167
+    },
+    "handling": "Keep SUSPICIOUS as a first-class reported class rather than relying only on high-grade aggregation."
+  },
+  {
+    "id": "RISK-03",
+    "severity": "CONTROLLED",
+    "topic": "Malignant/high-grade transfer",
+    "evidence": {
+      "MALIGNANT_recall_delta_pp": -0.5415336186788022,
+      "HIGH_GRADE_recall_delta_pp": -1.6791789636843246,
+      "TEST_MALIGNANT_recall": 0.7652439024390244,
+      "TEST_HIGH_GRADE_recall": 0.7529923830250272
+    },
+    "handling": "Transfer is materially more stable than intermediate classes, but prospective clinical utility is not established."
+  },
+  {
+    "id": "RISK-04",
+    "severity": "TECHNICAL",
+    "topic": "Candidate-stage max_det saturation",
+    "evidence": {
+      "candidate_max_det": 5000,
+      "saturation_images": 23,
+      "test_images": 203
+    },
+    "handling": "Do not change candidate max_det using TEST. Runtime exposes a candidate_max_det_saturated telemetry flag for engineering monitoring."
+  },
+  {
+    "id": "RISK-05",
+    "severity": "INTERPRETATION",
+    "topic": "V3 TEST class support",
+    "evidence": {
+      "V3_SUSPICIOUS_support": 0,
+      "V3_MALIGNANT_support": 1
+    },
+    "handling": "V3 subgroup high-grade/suspicious estimates are not robust; always show class support beside subgroup metrics."
+  },
+  {
+    "id": "RISK-06",
+    "severity": "SCOPE",
+    "topic": "Clinical use not established",
+    "evidence": {
+      "locked_heldout_TEST_completed": true,
+      "prospective_validation": false,
+      "multicenter_external_validation_established": false
+    },
+    "handling": "Use for engineering/viewer integration and controlled R&D evaluation. Standalone diagnostic use requires separate validation."
+  }
+]

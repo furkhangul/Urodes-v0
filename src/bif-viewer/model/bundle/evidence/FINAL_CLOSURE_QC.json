@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "closure_id": "UroDes_V5_CELL_DETECTOR_FINAL_CLOSURE_v1.1",
+  "pretest_lock_verified": true,
+  "pretest_lock_zip_sha256": "de061d1cdd175768a4a9741d75ce1949b8d589468de7f5b0407d0efcbe89c8d6",
+  "single_locked_test_result_verified": true,
+  "single_locked_test_result_zip_sha256": "1b43d4046f0737480d14edbb6518933a98498d31e0be7b109ddcb838b1cddaaa",
+  "test_QC_status": "PASS",
+  "test_closed": true,
+  "model_sha256_verified": true,
+  "true_ignore_module_sha256_verified": true,
+  "final_seed": 0,
+  "frozen_threshold": 0.2516763508319855,
+  "runtime_calibration_before_final_NMS": true,
+  "runtime_ATYPICAL_logit_bias": 0.3,
+  "runtime_final_NMS_iou": 0.3,
+  "runtime_final_max_det": 300,
+  "valid_only_smoke_status": "PASS",
+  "test_used_in_deployment_smoke": false,
+  "model_selection_reopened": false,
+  "threshold_selection_reopened": false,
+  "closure_status": "CLOSED_PASS_WITH_DOCUMENTED_LIMITATIONS"
+}

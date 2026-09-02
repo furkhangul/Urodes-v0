@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "input": {
+    "type": "single cytology tile",
+    "nominal_dimensions_px": [
+      640,
+      640
+    ],
+    "channels": 3
+  },
+  "output": {
+    "type": "detection list",
+    "bbox_format": "xyxy_pixels_in_original_tile_coordinates",
+    "score": "final calibrated score after ATYPICAL bias and before threshold filtering",
+    "fields": [
+      "bbox_xyxy",
+      "score",
+      "raw_score",
+      "native_class_id",
+      "native_class_name",
+      "clinical_class_id",
+      "clinical_class_name"
+    ]
+  },
+  "clinical5_order": [
+    {
+      "id": 0,
+      "name": "OTHER_CELL"
+    },
+    {
+      "id": 1,
+      "name": "BENIGN"
+    },
+    {
+      "id": 2,
+      "name": "ATYPICAL"
+    },
+    {
+      "id": 3,
+      "name": "SUSPICIOUS"
+    },
+    {
+      "id": 4,
+      "name": "MALIGNANT"
+    }
+  ],
+  "telemetry": [
+    "candidate_count",
+    "candidate_max_det_saturated",
+    "model_sha256",
+    "score_threshold"
+  ]
+}

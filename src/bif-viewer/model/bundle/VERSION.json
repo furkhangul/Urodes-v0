@@ -1,0 +1,11 @@
+{
+  "package": "UroDes_V5_VIEWER_PIPELINE_INTEGRATION",
+  "version": "1.0",
+  "source_closure": "UroDes_V5_FINAL_CLOSURE_AND_DEPLOYMENT_HANDOFF_v1.1",
+  "status": "ENGINEERING_VIEWER_INTEGRATION_HANDOFF",
+  "final_model_sha256": "c8914bec6e808dc09427a8c7dd638a6d44f551ca85245fd0b72ef5813ad3fe80",
+  "final_threshold": 0.2516763508319855,
+  "atypical_logit_bias": 0.3,
+  "final_agnostic_nms_iou": 0.3,
+  "final_max_det": 300
+}

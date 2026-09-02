@@ -1,0 +1,66 @@
+{
+  "closure_id": "UroDes_V5_CELL_DETECTOR_FINAL_CLOSURE_v1.1",
+  "status": "CLOSED_PASS_WITH_DOCUMENTED_LIMITATIONS",
+  "created_utc": "2026-08-29T18:16:56.240019+00:00",
+  "final_model": {
+    "family": "YOLO26s",
+    "training_semantics": "TRUE-IGNORE",
+    "seed": 0,
+    "checkpoint_sha256": "c8914bec6e808dc09427a8c7dd638a6d44f551ca85245fd0b72ef5813ad3fe80",
+    "true_ignore_module_sha256": "611bb908ba291fcea8274c9a2bc4315147f8a6ff95ba16f33c1fcbc7ee6df739"
+  },
+  "final_inference": {
+    "head": "O2M",
+    "imgsz": 1280,
+    "candidate_conf": 0.0001,
+    "candidate_iou": 0.99,
+    "candidate_max_det": 5000,
+    "ATYPICAL_logit_bias": 0.3,
+    "ATYPICAL_bias_before_final_NMS": true,
+    "final_class_agnostic_NMS_iou": 0.3,
+    "final_max_det": 300,
+    "frozen_VALID_threshold": 0.2516763508319855
+  },
+  "test_closure": {
+    "result_zip_sha256": "1b43d4046f0737480d14edbb6518933a98498d31e0be7b109ddcb838b1cddaaa",
+    "status": "FINAL_LOCKED_TEST_COMPLETE",
+    "test_closed": true,
+    "model_reselection_after_test": false,
+    "threshold_retuning_after_test": false
+  },
+  "final_test_primary": {
+    "actual_TEST_FPPI": 1.6502463054187193,
+    "FP_per_100_GT": 15.668849391955098,
+    "localization_recall": 0.7909260991580916,
+    "clinical5_macro_F2": 0.5159701915850108,
+    "ATYPICAL_recall": 0.20614035087719298,
+    "ATYPICAL_F2": 0.2324431256181998,
+    "SUSPICIOUS_recall": 0.2661596958174905,
+    "SUSPICIOUS_F2": 0.2988898377455167,
+    "MALIGNANT_recall": 0.7652439024390244,
+    "MALIGNANT_F2": 0.7395403653506188,
+    "HIGH_GRADE_recall": 0.7529923830250272,
+    "HIGH_GRADE_F2": 0.7579408543263965
+  },
+  "final_test_secondary": {
+    "exact_correct_rate": 0.6365762394761459,
+    "macro_F1": 0.5237514660436279,
+    "micro_F1": 0.6536983669548511,
+    "malignant_FPPI": 0.6995073891625616,
+    "highgrade_FPPI": 0.7635467980295566,
+    "artefact_FPPI": 0.2019704433497537,
+    "clinical5_AP50": 0.4471792189989959,
+    "clinical5_AP75": 0.21428245397874504,
+    "clinical5_mAP50_95": 0.2335436689921985,
+    "ATYPICAL_AP50": 0.17021531431402595,
+    "ATYPICAL_AP75": 0.08951310100526447,
+    "ATYPICAL_mAP50_95": 0.09104698414510284
+  },
+  "decision": "Close UroDes V5 model development and proceed to viewer/engineering integration with the pre-TEST selected seed0 contract. TEST does not reopen model selection. Intermediate urothelial generalization limitations remain documented release risks.",
+  "post_closure_policy": {
+    "V5_model_RD_reopened": false,
+    "viewer_integration_allowed": true,
+    "deployment_runtime_changes_require_new_version": true,
+    "future_training_data_requires_new_model_version": true
+  }
+}

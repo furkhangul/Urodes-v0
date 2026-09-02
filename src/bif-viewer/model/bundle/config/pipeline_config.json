@@ -1,0 +1,100 @@
+{
+  "bundle_version": "UroDes_V5_FINAL_v1.1",
+  "pipeline_name": "UroDes_V5_YOLO26s_TRUE_IGNORE_O2M_FINAL",
+  "closure_status": "RND_CLOSED_ENGINEERING_HANDOFF",
+  "model_family": "YOLO26s",
+  "active_seed": 0,
+  "active_model_relpath": "models/UroDes_V5_YOLO26s_TRUE_IGNORE_seed0_FINAL.pt",
+  "active_model_sha256": "c8914bec6e808dc09427a8c7dd638a6d44f551ca85245fd0b72ef5813ad3fe80",
+  "true_ignore_module_relpath": "runtime/urodes_ignore_yolo26_v2_3.py",
+  "true_ignore_module_sha256": "611bb908ba291fcea8274c9a2bc4315147f8a6ff95ba16f33c1fcbc7ee6df739",
+  "input": {
+    "intended_tile_width": 640,
+    "intended_tile_height": 640,
+    "channels": 3,
+    "semantic_color_space": "RGB cytology tile",
+    "ultralytics_imgsz": 1280
+  },
+  "candidate_generation": {
+    "head": "O2M",
+    "end2end": false,
+    "conf": 0.0001,
+    "iou": 0.99,
+    "max_det": 5000,
+    "agnostic_nms": false
+  },
+  "score_calibration": {
+    "type": "class_logit_bias",
+    "apply_before_final_NMS": true,
+    "native_class_id": 4,
+    "class_name": "ATYPICAL",
+    "logit_bias": 0.3,
+    "formula": "sigmoid(logit(raw_score) + 0.30)"
+  },
+  "final_postprocess": {
+    "nms_mode": "CLASS_AGNOSTIC",
+    "nms_iou": 0.3,
+    "max_det": 300,
+    "score_threshold": 0.2516763508319855,
+    "threshold_source": "FULL V5 VALID pre-test lock",
+    "threshold_retuned_on_TEST": false
+  },
+  "source_classes": {
+    "0": "HISTIOSIT",
+    "1": "LENFOSIT",
+    "2": "PMN",
+    "3": "SKUAMOZ_EPITEL",
+    "4": "ATYPICAL",
+    "5": "BENIGN",
+    "6": "SUSPICIOUS",
+    "7": "MALIGNANT"
+  },
+  "clinical5_mapping": {
+    "0": {
+      "id": 0,
+      "name": "OTHER_CELL"
+    },
+    "1": {
+      "id": 0,
+      "name": "OTHER_CELL"
+    },
+    "2": {
+      "id": 0,
+      "name": "OTHER_CELL"
+    },
+    "3": {
+      "id": 0,
+      "name": "OTHER_CELL"
+    },
+    "4": {
+      "id": 2,
+      "name": "ATYPICAL"
+    },
+    "5": {
+      "id": 1,
+      "name": "BENIGN"
+    },
+    "6": {
+      "id": 3,
+      "name": "SUSPICIOUS"
+    },
+    "7": {
+      "id": 4,
+      "name": "MALIGNANT"
+    }
+  },
+  "final_test_identity": {
+    "test_result_zip_sha256": "1b43d4046f0737480d14edbb6518933a98498d31e0be7b109ddcb838b1cddaaa",
+    "test_data_zip_sha256": "a3b34d2ec584af3b75b5b691c6c86684f67854673688567bd632aa4a5ccbe624",
+    "test_images": 203,
+    "test_biological_GT": 2138,
+    "test_closed": true
+  },
+  "usage_status": {
+    "engineering_integration_ready": true,
+    "standalone_diagnostic_use_established": false,
+    "prospective_clinical_utility_established": false,
+    "multicenter_generalization_established": false,
+    "regulatory_clearance_established": false
+  }
+}
